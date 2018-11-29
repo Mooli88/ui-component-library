@@ -1,0 +1,55 @@
+@import './abstracts/utilities.scss';
+@import './abstracts/variables.scss';
+
+.section {
+  margin: space($space-double);
+}
+
+.container {
+  width: 100%;
+  padding: space(($space-double, $space + $space-half));
+}
+
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-row--reverse {
+  flex-direction: row-reverse;
+}
+.flex-column--reverse {
+  flex-direction: column-reverse;
+}
+
+.flex-g--narrow {
+  flex: 0;
+}
+.flex-g--quarter {
+  flex: .25;
+}
+.flex-g--half {
+  flex: .5;
+}
+.flex-g--1 {
+  flex: 1;
+}
+.flex-g--2 {
+  flex: 2;
+}
+.flex-align--center {
+  align-items: center;
+}
+.flex-justify--center {
+  justify-content: center;
+}
+.flex-justify--end {
+  justify-content: flex-end;
+}
+
+@include grid-layout-generator(24, 'col', column);
+@include grid-layout-generator(12, 'row', row);

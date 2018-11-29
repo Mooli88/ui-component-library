@@ -1,0 +1,22 @@
+@import './variables.scss';
+
+%hidden {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  border: none;
+  z-index:-1000;
+  // left:-1000px;
+  overflow: hidden;
+  position:absolute;
+  visibility: hidden;
+}
+
+%visible {
+  visibility: visible;
+  opacity: 1;
+  border: $border-default;
+  z-index: 99;
+  height: initial;
+}

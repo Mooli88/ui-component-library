@@ -1,0 +1,66 @@
+@import './abstracts/variables.scss';
+@import './abstracts/utilities.scss';
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+
+  &:nth-of-type(n+2) {
+    margin-top: space($space-double, 'vertical');
+  }
+
+  &.inline {
+    flex-direction: row;
+  }
+
+  .form-field {
+    padding: 0;
+    margin-bottom: space($space, 'vertical');
+  }
+}
+
+.field-group.inline .form-field {
+  padding-right: space($space-double + 1, 'horizontal');
+  margin-bottom: 0;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  & > span {
+    padding-right: space($space, 'horizontal');
+    flex-basis: toRem(100);
+  }
+
+  .field-body {
+    display: flex;
+    flex-basis: toRem(150);
+  }
+
+}
+///////depracated
+label {
+  display: flex;
+  align-items: center;
+}
+
+label.form-field-type--text,
+label.form-field-type--number {
+
+  & > span {
+    padding-right: space($space, 'horizontal');
+    min-width: toRem(100);
+  }
+
+  input[type=text],
+  input[type=number] {
+    flex: 1;
+  }
+};
+
+// label.form-field-type--checkbox,
+// label.form-field-type--radio {
+
+// }

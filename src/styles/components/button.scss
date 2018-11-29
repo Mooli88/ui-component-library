@@ -1,0 +1,24 @@
+@import '../abstracts/variables.scss';
+
+button {
+  text-align: center;
+  text-transform: uppercase;
+  background-color: $default-color;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 1em 1.5rem;
+  transition: all .15s ease;
+
+  &.button-small {
+    padding: .6em 1.5rem;
+  }
+
+  &.big {
+  }
+
+  &:active,
+  &.active {
+    box-shadow: 0px 4px 4px -1px #686868;
+    transform: translateY(-2px);
+  }
+}

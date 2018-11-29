@@ -1,0 +1,68 @@
+@import '../abstracts/utilities.scss';
+
+//theme map
+$theme-light: (
+  primary: (
+    base: #423489,
+    light: #7260d0,
+    dark: #6a5abb,
+    base-border: #ccc,
+    base-text: #fff,
+    dark-border: rgba(0, 0, 0, 0.25),
+    dark-text: #666,
+    light-text: #BCBCBC,
+    light-border: #DEDEDE,
+  ),
+
+  secondary: (
+    base: #63bbfc,
+    light:'',
+    dark:'',
+    // base-border:
+    // base-text:
+    // light-border:
+    // light-text:
+    // dark-border:
+    // dark-text:
+  ),
+
+  state: (
+    checked: #63BBFC,
+    disabled: #DEDEDE,
+    focus: #63BBFC,
+    warn: #C1272D,
+  ),
+
+  //TODO: Need to rethink this one:
+  background: (
+    primary: #fff,
+    secondary: #f4f4f4,
+    4: #ccc,
+  ),
+
+  // border: (
+  //   1: #ccc,
+  //   2: #DEDEDE,
+  //   3: rgba(0, 0, 0, 0.25),
+  // ),
+
+  // color: (
+  //   1: #fff,
+  //   2: #BCBCBC,
+  //   3: #666,
+  // ),
+
+);
+
+$disabled: (
+  disabled: (
+  border: mapExtract($theme-light, primary, light-border),
+  // background: mapExtract($theme-light, background, secondary),
+  background: #FAFAFA,
+  background-2:#e6e6e6,
+  color: mapExtract($theme-light, primary, light-text),
+  )
+);
+
+
+$theme-light: map-merge($theme-light, $disabled);

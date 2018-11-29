@@ -1,0 +1,31 @@
+@import '../abstracts/variables.scss';
+@import '../abstracts/utilities.scss';
+
+input {
+    border: $border-default;
+    display: inline-block;
+    // border-radius: 3px;
+    outline: none;
+    width: 100%;
+    min-width: toRem(200);
+    padding: $input-space;
+  }
+
+//   &:focus {
+//     border-color: $border-focus;
+//     background-color:   $background-alternate;
+//   }
+
+//   &:disabled {
+//     border-color: $border-disabled;
+//     background-color:   $background-disabled;
+//   }
+
+//   &:invalid,
+//   &.error {
+//     border-color: $error;
+//     background-color:   $background-alternate;
+//   }
+
+// }
+// }

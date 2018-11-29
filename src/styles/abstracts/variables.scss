@@ -1,0 +1,18 @@
+//px | I couldn't specify the unit as it will break `toRem / toEm` functions
+$font-base: 12;
+
+$border-default: 1px solid;
+
+//space (em's /rem's):
+$space-quarter: .25;
+$space-half: .5;
+$space: 1;
+$space-double: 2;
+
+$input-space: #{$space-half + .1}em #{$space-half}rem;
+$click-to-action-space: $input-space;
+
+
+// color:
+
+$default-color: #ddd;

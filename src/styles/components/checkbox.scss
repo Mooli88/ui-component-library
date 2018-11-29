@@ -1,0 +1,60 @@
+@import '../abstracts/import.scss';
+
+input[type=checkbox]{
+  @extend %hidden;
+}
+
+.checkbox {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: $border-default;
+  width: toEm(20, 12);
+  height: toEm(20, 12);
+  vertical-align: middle;
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type=checkbox]:checked + .checkbox {
+  border: none;
+  &::after {
+    content: "\002714";
+  }
+
+}
+
+.checkbox.checkbox--md {
+  font-size: toEm(10);
+}
+
+.checkbox.checkbox--sm {
+  font-size: toEm(8);
+}
+
+.checkbox.checkbox-switch {
+  border: none;
+  justify-content: flex-start;
+  border-radius: 20px;
+  width: toEm(40, 12);
+  height: toEm(20, 12);
+
+  transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::after {
+    content: "\0020";
+    height: 18px;
+    width: 18px;
+    border-radius: 100%;
+    transform: translateX(10%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+input[type=checkbox]:checked + .checkbox.checkbox-switch {
+  border: none;
+
+  &::after {
+    content: "\0020";
+    transform: translateX(110%);
+  }
+}

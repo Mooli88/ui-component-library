@@ -1,0 +1,10 @@
+@import '../abstracts/import.scss';
+
+textarea {
+  border: $border-default;
+  width: toRem(300);
+  height: toRem(120);
+  min-height: toRem(60);
+  max-height: toRem(240);
+  resize: vertical;
+}

@@ -1,0 +1,19 @@
+@import './abstracts/variables.scss';
+
+.icon {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center right #{$space-half}rem;
+
+  &.icon--gb {
+    background-image: url('./assets/icons/gb.svg');
+  }
+  &.icon--date-range {
+    background-image: url('./assets/icons/date_range.svg');
+  }
+}
+
+span.icon {
+  padding: 0 space($space-double + $space-half, 'horizontal');
+  background-position: right;
+}

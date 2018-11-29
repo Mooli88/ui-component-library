@@ -1,0 +1,70 @@
+<div class="container">
+
+  <div class="field-group inline">
+    <label class="form-field">
+      <span class="highlight">Label</span>
+
+      <div class="field-body flex-g--1">
+        <app-custom-dropdown [options]="options"
+                             [selectedOptionsList]="selectedOptionsList"
+                             [selectedMode]="'selectDefault'"
+                             (selectOption)="onSelect($event)"
+                             (removeOption)="removeOption($event)">
+        </app-custom-dropdown>
+      </div>
+    </label>
+
+    <label class="form-field">
+      <span class="highlight">Label</span>
+
+      <div class="field-body flex-g--1">
+        <input type="text"
+               class="icon icon--gb field-body"
+               placeholder="placeholder text">
+      </div>
+    </label>
+  </div>
+
+  <div class="field-group inline">
+    <label class="form-field">
+      <span class="highlight">Label</span>
+
+      <div class="field-body flex-g--half">
+        <input type="date">
+        <span class="icon icon--date-range"></span>
+      </div>
+    </label>
+
+    <label class="form-field">
+      <span class="highlight">Label</span>
+
+      <div class="field-body flex-g--narrow">
+        <input type="text"
+               class="icon icon--gb field-body"
+               placeholder="placeholder text">
+      </div>
+    </label>
+  </div>
+
+  <div class="field-group inline">
+    <label class="form-field">
+      <span class="highlight">Label</span>
+
+      <div class="field-body flex-g--half">
+        <input type="number">
+      </div>
+    </label>
+
+    <label class="form-field">
+      <span class="highlight">Label</span>
+
+      <div class="field-body flex-g--half">
+        <input type="text"
+               class="icon icon--gb field-body"
+               placeholder="placeholder text">
+      </div>
+    </label>
+  </div>
+
+
+</div>

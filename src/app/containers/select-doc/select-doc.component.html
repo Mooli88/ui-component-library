@@ -1,0 +1,107 @@
+<div class="space-top space-bottom flex">
+
+  <label class="form-field-type--text flex-g--quarter">
+    <span class="highlight">Default</span>
+
+    <div class="select-container">
+
+      <select name=""
+              id="">
+        <option *ngFor="let option of options">{{option.label}}</option>
+      </select>
+    </div>
+
+  </label>
+</div>
+
+<div class="space-top space-bottom flex">
+
+  <label class="form-field-type--text flex-g--quarter">
+    <span class="highlight">Multi select</span>
+
+    <div class="select-container">
+
+      <select name=""
+              multiple
+              id="">
+        <option *ngFor="let option of options">{{option.label}}</option>
+      </select>
+    </div>
+
+  </label>
+</div>
+
+<div class="space-top space-bottom flex">
+
+  <label class="form-field-type--text flex-g--quarter">
+    <span class="highlight">Disabled</span>
+
+    <div class="select-container disabled">
+
+      <select name=""
+              disabled
+              id="">
+        <option *ngFor="let option of options">{{option.label}}</option>
+      </select>
+    </div>
+
+  </label>
+</div>
+
+<div class="space">
+  <hr>
+  <span>Using the `custom-dropdown` component</span>
+  <hr>
+</div>
+
+<div class="space-top space-bottom flex">
+
+  <label class="form-field-type--text flex-g--quarter">
+    <span class="highlight">Default</span>
+
+    <app-custom-dropdown [options]="options"
+                         [selectedMode]="'selectDefault'"
+                         (selectOption)="onSelect($event)"
+                         (removeOption)="removeOption($event)">
+    </app-custom-dropdown>
+  </label>
+</div>
+
+<div class="space-top space-bottom flex">
+
+  <label class="form-field-type--text flex-g--quarter">
+    <span class="highlight">Multi select</span>
+
+    <app-custom-dropdown [options]="options"
+                         [selectedOptionsList]="selectedOptionsList"
+                         [selectedMode]="'selectMultiple'"
+                         (selectOption)="onSelect($event)"
+                         (removeOption)="removeOption($event)">
+    </app-custom-dropdown>
+  </label>
+</div>
+
+
+<div class="space-top space-bottom flex">
+
+  <label class="form-field-type--text flex-g--quarter">
+    <span class="highlight">Disabled</span>
+
+    <app-custom-dropdown [isDisabled]="true"
+                         [options]="options"
+                         [selectedOptionsList]="selectedOptionsList"
+                         [selectedMode]="'selectDefault'"
+                         (selectOption)="onSelect($event)"
+                         (removeOption)="removeOption($event)">
+    </app-custom-dropdown>
+  </label>
+</div>
+
+Default:
+<code>{{selectedOption | json}}</code>
+<br> Multi:
+<ul>
+  <li *ngFor="let option of selectedOptionsList">
+    <code (click)="removeOption(option)">{{option | json}}</code>
+  </li>
+</ul>

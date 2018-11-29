@@ -1,0 +1,33 @@
+@import '../styles/abstracts/import.scss';
+
+:host {
+  display: grid;
+  height: 100%;
+  // grid-template-areas:
+  //   'header header header'
+  //   'nav main main'
+  //   'footer footer footer';
+  // grid-template-columns: repeat(24, minmax(toRem(50), auto));
+  grid-template-columns: repeat(24, auto);
+  grid-template-rows: repeat(12, auto);
+  // grid-template-rows: toRem(64) auto toRem(32);
+}
+
+header {
+  // grid-area: header;
+}
+
+.nav {
+  // grid-area: nav;
+}
+
+main {
+  // grid-area: main;
+  background-color: #f4f4f4;
+
+  padding: space($space);
+}
+
+footer {
+  // grid-area: footer;
+}

@@ -1,0 +1,308 @@
+@import '../abstracts/variables.scss';
+
+@mixin common-theme($theme) {
+    $background: map-get($theme, background);
+    $state: map-get($theme, state);
+    $disabled: map-get($theme, disabled);
+
+    &:focus {
+      border-color: map-get($state, focus);
+      background-color: map-get($background, primary);
+    }
+
+    &:disabled {
+      border-color: map-get($disabled, border);
+      background-color: map-get($disabled, background);
+      color: map-get($disabled, color);
+    }
+
+    &:invalid,
+    &.warning {
+      border-color: map-get($state, warn);
+      background-color:   map-get($background, primary);
+    }
+};
+
+@mixin body-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  color: map-get($primary, dark-text);
+
+  a {
+    color: map-get($primary, base-text);
+  }
+}
+
+@mixin nav-theme($theme) {
+  $primary: map-get($theme, primary);
+  $secondary: map-get($theme, secondary);
+
+  .nav {
+    color: map-get($primary, base-text);
+    background-color: map-get($primary, base);
+  }
+
+}
+
+@mixin header-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  header {
+    color: map-get($primary, base-text);
+    background-color: map-get($primary, light)
+  }
+}
+
+@mixin main-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  main {
+    background-color: map-get($primary, light)
+  }
+}
+
+@mixin main-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  footer {
+    background-color: map-get($primary, dark)
+  }
+}
+
+@mixin layout-theme($theme) {
+  $primary: map-get($theme, primary);
+  $background: map-get($theme, background);
+
+  .container {
+    // border-color: map-get($primary, border-base);
+    background-color: map-get($background, primary);
+  }
+}
+
+@mixin checkbox-theme($theme) {
+  $primary: map-get($theme, primary);
+  $background: map-get($theme, background);
+  $state: map-get($theme, state);
+  $disabled: map-get($theme, disabled);
+
+  .checkbox {
+    border-color: map-get($primary, border-base);
+    background-color: map-get($background, secondary);
+    color: map-get($primary, base-text);
+  }
+
+  .checkbox-switch {
+    background-color: map-get($background, 4);
+
+    &::after {
+      background-color: map-get($background, primary);
+    }
+  }
+
+  input[type=checkbox]:checked + .checkbox,
+  input[type=checkbox]:checked:focus + .checkbox {
+    background-color: map-get($state, checked);
+  }
+
+  input[type=checkbox]:focus + .checkbox {
+    border-color: map-get($state, focus);
+    background-color: map-get($background, primary);
+  }
+
+  input[type=checkbox]:invalid + .checkbox {
+    border-color: map-get($state, warn);
+    background-color:   map-get($background, primary);
+  }
+
+  input[type=checkbox]:disabled + .checkbox,
+  input[type=checkbox]:checked:disabled + .checkbox {
+    border: $border-default;
+    border-color: map-get($disabled, border);
+    background-color: map-get($disabled, background);
+    color: map-get($disabled, color);
+  }
+}
+
+@mixin radio-button-theme($theme) {
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $state: map-get($theme, state);
+  $disabled: map-get($theme, disabled);
+
+  .radio-btn {
+    border-color: map-get($primary, base-border);
+    background-color: map-get($background, secondary);
+    color: map-get($primary, base-text);
+  }
+
+  input[type=radio]:checked + .radio-btn,
+  input[type=radio]:checked:focus + .radio-btn {
+    border-color: map-get($primary, dark-border);
+    background-color: map-get($state, checked);
+  }
+
+  input[type=radio]:focus + .radio-btn {
+    border-color: map-get($state, focus);
+    background-color: map-get($background, primary);
+  }
+
+  input[type=radio]:invalid + .radio-btn {
+    border-color: map-get($state, warn);
+    background-color:   map-get($background, primary);
+  }
+
+  input[type=radio]:checked:disabled + .radio-btn,
+  input[type=radio]:disabled + .radio-btn {
+    border: $border-default;
+    border-color: map-get($disabled, border);
+    background-color: map-get($disabled, background);
+
+    &::after {
+        background-color: map-get($disabled, border);
+      }
+    }
+}
+
+@mixin input-theme($theme) {
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $state: map-get($theme, state);
+
+  input {
+    border-color: map-get($primary, base-border);
+    background-color: map-get($background, secondary);
+    @include common-theme($theme);
+  }
+}
+
+@mixin textarea-theme($theme) {
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $state: map-get($theme, state);
+
+  textarea {
+    border-color: map-get($primary, base-border);
+    background-color: map-get($background, secondary);
+    @include common-theme($theme);
+  }
+}
+
+
+@mixin custom-select-theme($theme) {
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $state: map-get($theme, state);
+
+  app-custom-dropdown {
+    .select {
+      border-color: map-get($primary, base-border);
+      background-color: map-get($background, secondary);
+    }
+
+    .dropdown {
+      background-color: map-get($background, primary);
+    }
+
+    ul li {
+      &:hover {
+        background-color: map-get($background, secondary);
+      }
+    }
+
+    input[name=dropdown-toggle][type=checkbox]:checked + .custom-dropdown {
+      .select {
+        border-color: map-get($state, focus);
+        border-bottom-color: map-get($primary, base-border);
+        background-color: map-get($background, primary);
+      }
+
+      .dropdown {
+        border-color: map-get($state, focus);
+      }
+
+    }
+
+  }
+
+}
+
+@mixin select-theme($theme) {
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $state: map-get($theme, state);
+
+  .select-container {
+    border-color: map-get($primary, base-border);
+    background-color: map-get($background, secondary);
+
+    &:focus-within {
+      border-color: map-get($state, focus);
+      background-color: map-get($background, primary);
+    }
+
+    select {
+      background-color: map-get($background, secondary);
+      @include common-theme($theme);
+    }
+  }
+
+}
+
+@mixin class-theme($theme) {
+  $secondary: map-get($theme, secondary);
+  $disabled: map-get($theme, disabled);
+
+  app-root {
+
+    .highlight {
+      color: map-get($secondary, base);
+    }
+
+    .disabled {
+      border-color: map-get($disabled, border);
+      background-color: map-get($disabled, background);
+      color: map-get($disabled, color);
+    }
+  }
+}
+
+@mixin button-theme($theme) {
+  $background: map-get($theme, background);
+  $primary: map-get($theme, primary);
+  $secondary: map-get($theme, secondary);
+  $color: map-get($theme, primary);
+  $primary-base: map-get($primary, base);
+  $secondary-base: map-get($secondary, base);
+
+  button {
+    color: map-get($primary, base-text);
+    &.primary {
+      background-color: $primary-base;
+
+      &:hover {
+        background-color: darken($primary-base, 2%);
+      }
+
+      &:active,
+      &.active {
+        background-color: darken($primary-base, 4%);
+        box-shadow: 0px 4px 4px -1px #686868;
+      }
+    }
+
+    &.secondary {
+      background-color: $secondary-base
+      ;
+
+      &:hover {
+        background-color: darken($secondary-base, 2%);
+      }
+
+      &:active,
+      &.active {
+        background-color: darken($secondary-base, 4%);
+      }
+
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+    <li *ngFor="let category of $categories | async">
+      <a routerLink="{{category.url}}"
+         routerLinkActive="active">
+        <span>{{category.name}}</span>
+      </a>
+      <ul>
+        <ng-container *ngIf="category.items.length">
+
+          <li *ngFor="let item of category.items">
+            <a routerLink="{{item.url}}"
+               routerLinkActive="active">
+              <span>{{item.name}}</span>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </li>
+  </ul>
+
+</nav>

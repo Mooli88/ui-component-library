@@ -1,0 +1,107 @@
+@import '../abstracts/variables.scss';
+@import '../abstracts/placeholders.scss';
+@import '../abstracts/utilities.scss';
+
+.select-container {
+  min-width: toRem(300);
+  min-height: toRem(35);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid;
+
+  select {
+    height: 100%;
+    width: 98%;
+    position: absolute;
+    border: none;
+
+    &[multiple] {
+      position: relative;
+    }
+  }
+}
+
+app-custom-dropdown {
+  // min-width: toRem(300);
+  width: 100%;
+  display: block;
+
+  .hidden {
+    @extend %hidden;
+    position: absolute;
+  }
+
+  .custom-dropdown {
+    position: relative;
+
+    label,
+    .dropdown,
+    input[type=text] {
+      width: 100%;
+    }
+  }
+
+  .select {
+    border: $border-default;
+
+    span {
+      display: block;
+      width: 100%;
+    };
+
+    padding: $click-to-action-space;
+
+    &::after {
+      content: '\25BE';
+      float: right;
+    }
+  }
+
+  .dropdown {
+    border: $border-default;
+
+    &:not(.dropdown-multiselect) {
+      border-top: none !important;
+    }
+
+    position: absolute;
+
+    @extend %hidden;
+
+      ul{
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin: 0;
+
+          label,
+          & > span {
+            display: inline-block;
+            padding: space($space-half);
+            cursor: pointer;
+          }
+        }
+      }
+  }
+
+  input[name=dropdown-toggle][type=checkbox]:checked + .custom-dropdown {
+    .select {
+      border-bottom: $border-default;
+
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    .dropdown {
+      @extend %visible;
+
+      &.dropdown-multiselect {
+        width: 100%;
+        min-width: max-content;
+      }
+    }
+  }
+
+}

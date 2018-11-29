@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import './styles/imports';
+
+html {
+  font-size: 75%;
+}
+
+html,
+body {
+  display: block;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: 100;
+
+  .dark {
+    @include app-theme($theme-dark);
+  }
+
+  .light {
+    @include app-theme($theme-light);
+  }
+}
+
+nav {
+  width: toEm(180);
+}

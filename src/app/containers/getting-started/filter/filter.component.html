@@ -1,0 +1,36 @@
+<div class="container field-group inline">
+
+
+  <label class="form-field">
+    <span class="highlight">Status</span>
+
+    <div class="field-body flex-g--1">
+      <app-custom-dropdown [options]="options"
+                           [selectedOptionsList]="selectedOptionsList"
+                           [selectedMode]="'selectMultiple'"
+                           (selectOption)="onSelect($event)"
+                           (removeOption)="removeOption($event)">
+      </app-custom-dropdown>
+    </div>
+  </label>
+
+  <label class="form-field">
+    <span class="highlight">ID</span>
+    <input type="text"
+           class="icon icon--gb field-body"
+           placeholder="placeholder text">
+  </label>
+
+  <label class="form-field">
+    <span class="highlight">Name</span>
+    <input type="text"
+           class="icon icon--gb field-body"
+           placeholder="placeholder text">
+  </label>
+
+  <div class="form-field flex-justify--end flex-g--half">
+    <button class="primary button-small">Filter</button>
+  </div>
+
+
+</div>

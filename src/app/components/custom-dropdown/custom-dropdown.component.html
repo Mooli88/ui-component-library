@@ -1,0 +1,73 @@
+<input type="checkbox"
+       [id]="id"
+       name="dropdown-toggle"
+       [disabled]="isDisabled"
+       #dropdownToggle
+       class="hidden">
+
+
+<div class="custom-dropdown"
+     #customDropdown>
+
+  <label class="select"
+         tabindex="1"
+         [class.disabled]="isDisabled"
+         (keyup.enter)="dropdownToggle.checked = !dropdownToggle.checked"
+         [for]="id">
+
+    <ng-container [ngSwitch]="selectedMode">
+      <span *ngSwitchCase="selectMode.multiple">placeholder</span>
+      <span *ngSwitchCase="selectMode.default">
+        {{selectedOption ? selectedOption.label : 'placeholder'}}
+      </span>
+    </ng-container>
+  </label>
+
+  <div class="dropdown"
+       [class.dropdown-multiselect]="selectedMode === selectMode.multiple">
+
+    <ng-container *ngIf="selectedMode === selectMode.default">
+      <ng-container *ngTemplateOutlet="selectDefault"></ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="selectedMode === selectMode.multiple">
+      <ng-container *ngTemplateOutlet="selectMultiple"></ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<!-- Mods: -->
+<ng-template #selectDefault>
+  <ul>
+    <li *ngFor="let option of options"
+        (click)="onSelect(option);
+                 selectOption.emit({
+                    value: option,
+                    type: selectedMode
+                  })">
+      <span>{{option.label}}</span>
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #selectMultiple>
+  <ul>
+    <li *ngFor="let option of options; index as $i">
+      <label>
+        <input type="checkbox"
+               #isSelected
+               name="{{option.value}}"
+               [checked]="selectedOptions[option.value]"
+               (click)="selectOption.emit(
+                 {
+                  value: option,
+                  isSelected: isSelected.checked,
+                  type: selectedMode
+                })">
+
+        <div class="[ checkbox checkbox--md ][ space-right--half ]"></div>
+        <span>{{option.label}}</span>
+      </label>
+    </li>
+  </ul>
+</ng-template>

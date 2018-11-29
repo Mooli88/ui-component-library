@@ -1,0 +1,95 @@
+@import './variables.scss';
+
+//Determines the unit base on space direction:
+@function space($amount: 1, $direction: null) {
+  $space: #{$amount}em #{$amount}rem;
+  $amount_1: null;
+  $amount_2: null;
+
+  // @debug $direction;
+  @if (type-of($amount) == 'list') {
+    $amount_1: nth($amount, 1);
+    $amount_2: nth($amount, 2);
+
+    @return #{$amount_1}em #{$amount_2}rem;
+  }
+
+  @if($direction == 'vertical') {
+    $space: #{$amount}em;
+  }
+  @if($direction == 'horizontal') {
+    $space: #{$amount}rem;
+  }
+
+  @return $space;
+}
+
+
+//Convert px to rem / em:
+$browser-context: $font-base;
+
+@function toRem($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}rem;
+};
+
+@function toEm($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+};
+
+//Get property from nested maps:
+@function mapExtract($map, $property, $color-variant:null) {
+  @if ($color-variant != null) {
+
+    @return map-get(map-get($map, $property), $color-variant);
+  }
+  @else {
+
+    @return map-get($map, $property);
+  }
+};
+
+@mixin space-generator(
+  $direction-map,
+  $amount-map,
+  $class-base-name: '.space',
+  $space-property: padding) {
+
+  $direction-keys: map-keys($direction-map);
+  $amount-keys: map-keys($amount-map);
+
+  @each $direction-key in $direction-keys {
+
+    @each $amount-key in $amount-keys {
+      $direction-value: map-get($direction-map, $direction-key);
+      $amount-value: map-get($amount-map, $amount-key);
+
+      #{$class-base-name}#{$direction-key}#{$amount-key}  {
+        #{$space-property}#{$direction-key}: space($amount-value, $direction-value);
+      }
+    }
+  }
+}
+
+// TODO: Add Cols option. Add media query (xs, sm, md, lg...)
+@mixin grid-layout-generator($blocks: 24, $layoutName: 'col', $layouttype: column) {
+  // Add 1 to generate the end of the last row / col. ie: [col24-end]
+  $blocks: $blocks + 1;
+
+  @for $fromRow from 1 through $blocks {
+      .g__#{$layoutName}-#{$fromRow} {
+        grid-#{$layouttype}: $fromRow;
+      }
+
+      .g__#{$layoutName}-#{$fromRow}--span {
+        grid-#{$layouttype}: $fromRow span;
+      }
+
+    @if $fromRow != $blocks {
+      @for $toRow from $fromRow + 1 through $blocks {
+        .g__#{$layoutName}-#{$fromRow}-to-#{$toRow} {
+          grid-#{$layouttype}: #{$fromRow} / #{$toRow};
+        }
+      }
+    }
+  }
+}

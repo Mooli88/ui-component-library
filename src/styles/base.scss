@@ -1,0 +1,66 @@
+@import './abstracts/utilities.scss';
+@import './abstracts/variables.scss';
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  outline: none;
+}
+
+// Resets margins and paddings for headers, ul, ol and p
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+// ul,
+// li,
+p,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+textarea,
+button {
+  outline: none;
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+span {
+  vertical-align: middle;
+}
+
+ul{
+  padding: 0 space($space-half, 'horizontal');
+  list-style-type: none;
+
+  li {
+    margin: space($space-half, 'vertical') 0;
+  }
+}
+
+//Generating space classes base on these maps:
+$space-direction: (
+  '': '',
+  -left: 'horizontal',
+  -right: 'horizontal',
+  -top: 'vertical',
+  -bottom: 'vertical'
+);
+
+$amount: (
+  '': $space,
+  --quarter: $space-quarter,
+  --half: $space-half,
+  --double: $space-double
+  );
+
+@include space-generator($space-direction, $amount, '.space', 'margin');
+@include space-generator($space-direction, $amount, '.space-inset', 'padding');

@@ -1,0 +1,17 @@
+@import './mixins-theme';
+
+@mixin app-theme($theme) {
+  @include body-theme($theme);
+  @include class-theme($theme);
+  @include layout-theme($theme);
+  @include header-theme($theme);
+  @include nav-theme($theme);
+  @include main-theme($theme);
+  @include checkbox-theme($theme);
+  @include radio-button-theme($theme);
+  @include button-theme($theme);
+  @include input-theme($theme);
+  @include textarea-theme($theme);
+  @include select-theme($theme);
+  @include custom-select-theme($theme);
+}
